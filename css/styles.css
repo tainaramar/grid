@@ -33,6 +33,92 @@ img{
     ;
 }
 
+@keyframes seta{
+    from{
+        right:30px;
+    }
+    to{
+        right: 20px;
+    }
+}
+
+@media(max-width: 1200px){
+    .estrutura{
+    
+        grid-template-areas: 
+         "header header header"
+        "sidenav content  content"
+          "sidenav anuncios  anuncios"
+        "footer footer footer";
+    }
+
+
+}
+
+@media(max-width: 760px){
+    .estrutura{ 
+        grid-template-columns: 100%;
+
+        grid-template-areas: 
+         "header"
+        "sidenav"
+        "content"
+        "anuncios"
+        "footer";
+    }
+
+    .header{
+        grid-template-columns: auto;
+    }
+    .logo{
+        margin-bottom: 20px;
+    }
+    .header nav a{
+        font-size: 1em;
+    }
+    .header li + li{
+        margin-left: 10px;
+    }
+
+    .sidenav{
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+    .sidenav::after{
+        content: '➜';
+        position: absolute;
+        top: 5px;
+        right: 30px;
+        color: rgba(0, 0, 0, .3);
+        animation: seta .5s ease-in 0s infinite alternate;
+
+    }
+
+    .sidenav ul {
+        display: flex;
+    }
+    .sidenav ul li{
+        flex: 1 0 60px;
+    }
+    .sidenav{
+        padding: 0 30px;
+    }
+    .sidenav li a {
+        margin: 30px 30px 30px 0;
+    }
+
+
+}
+
+@media(max-width: 600px){
+    .content{
+        grid-template-columns: auto;
+    }
+
+}
+
 /*HEADER*/
 
 .header{
@@ -116,6 +202,8 @@ img{
     align-content: start;
     padding: 30px;
     grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    
 }
 
 .col-wide{
@@ -157,6 +245,7 @@ p{
     font-size: 0.875em;
     font-style: italic;
 }
+
 /*Caracteristica*/
 
 .caractetistica{
@@ -170,7 +259,7 @@ p{
     text-align: center;
     background: linear-gradient(135deg, #8844ee, #B07DFB);
     border-radius: 5px;
-    box-shadow: 5px 5px 15px 0px(44, 44, 44, 0.15);
+    box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
     position: relative;
 }
 
@@ -181,12 +270,11 @@ p{
 
 .caractetistica span{
     display: block;
-        color: #B07DFB;
+    color: #B07DFB;
 
 }
 
 .numero{
-    color: #B07DFB;
     font-size: 3em;
     line-height: 1;
     margin: 10px auto;
@@ -197,6 +285,37 @@ p{
     border-radius: 0 0 5px 5px;
     padding: 5px 0;
     position: relative;
+    top: 2px;
+}
+.destaque{
+    font-size: 0.875em;
+    color: #8844ee;
+    max-width: 16em;
+}
+.citacao, .atributos{
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
+    background:  linear-gradient(135deg, #8844ee, #B07DFB);
+    align-self: flex-start;
+
+}
+
+.citacao p{
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+.atributos li{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    padding: 15px;
+    border-bottom: 2px solid #B07DFB;
 }
 
 .footer{
